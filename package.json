@@ -1,0 +1,74 @@
+{
+  "name": "react-css-cx",
+  "version": "0.0.0-development",
+  "description": " A very simplistic approach for classname composition for React Components",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "test": "mocha",
+    "semantic-release": "semantic-release",
+    "prepack": "npm run build"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alicanerdogan/react-css-cx.git"
+  },
+  "keywords": [
+    "react",
+    "css",
+    "typescript",
+    "esm",
+    "cjs",
+    "css-in-js",
+    "commonjs",
+    "ecmascript"
+  ],
+  "author": "Alican Erdogan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alicanerdogan/react-css-cx/issues"
+  },
+  "homepage": "https://github.com/alicanerdogan/react-css-cx#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^10.0.0",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "semantic-release": "^19.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "optionalDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
