@@ -21,9 +21,12 @@
   ],
   "scripts": {
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run minify",
     "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "minify": "npm run minify:esm && npm run minify:cjs",
+    "minify:esm": "terser --compress --mangle --module -o lib/esm/index.mjs -- lib/esm/index.mjs ",
+    "minify:cjs": "terser --compress --mangle -o lib/cjs/index.js -- lib/cjs/index.js",
     "test": "mocha",
     "semantic-release": "semantic-release",
     "prepack": "npm run build"
@@ -62,6 +65,7 @@
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "semantic-release": "^19.0.5",
+    "terser": "^5.15.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   },
