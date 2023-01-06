@@ -1,0 +1,6 @@
+node_modules/
+lib/
+*.swp
+.nyc_output/
+coverage/
+.vscode

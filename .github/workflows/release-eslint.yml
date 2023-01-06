@@ -1,4 +1,4 @@
-name: Release react-css-cx
+name: Release eslint-plugin-react-css-cx
 on:
   workflow_run:
     workflows: ["Tests"]
@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: "lts/*"
       - name: Switch to package
-        run: cd packages/react-css-cx
+        run: cd packages/eslint-plugin-react-css-cx
       - name: Install dependencies
         run: npm ci
       - name: Release

@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:eslint-plugin/all",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "eqeqeq": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": "error",
+    "@typescript-eslint/member-delimiter-style": "error",
+    "@typescript-eslint/no-array-constructor": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-parameter-properties": "error",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "eslint-plugin/require-meta-docs-description": [
+      "error",
+      {
+        "pattern": "^(Enforces|Requires|Disallows|Detects)"
+      }
+    ],
+    "eslint-plugin/require-meta-docs-url": [
+      "error",
+      {
+        "pattern": "https://github.com/43081j/eslint-plugin-lit/blob/master/docs/rules/{{name}}.md"
+      }
+    ],
+    "eslint-plugin/require-meta-type": "off"
+  }
+}
