@@ -13,7 +13,7 @@ function subject(code: string, options: Partial<ParserOptions> = {}) {
 const unformattedFile1 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 text-blue-500
 \`;
@@ -27,7 +27,7 @@ export const Component = () => {
 
 const formattedFile1 = `import { style } from "react-css-cx";
 
-const Container = style\`
+const Container = style("div")\`
   p-[5px]
   text-blue-500
 \`;
@@ -40,7 +40,7 @@ export const Component = () => {
 const unformattedFile2 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 text-blue-500
 \${(() => \`test\`)()}
@@ -62,7 +62,7 @@ export const Component = () => {
 
 const formattedFile2 = `import { style } from "react-css-cx";
 
-const Container = style\`
+const Container = style("div")\`
   p-[5px]
   text-blue-500
   \${(() => \`test\`)()}
@@ -83,7 +83,7 @@ export const Component = () => {
 const unformattedFile3 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 text-blue-500
   
@@ -100,7 +100,7 @@ export const Component = () => {
 
 const formattedFile3 = `import { style } from "react-css-cx";
 
-const Container = style\`
+const Container = style("div")\`
   p-[5px]
   text-blue-500
 
@@ -116,7 +116,7 @@ export const Component = () => {
 const unformattedFile4 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`p-[5px] text-blue-500
+const Container = style("div")\`p-[5px] text-blue-500
 text-[14px] leading-[20px]
 \`;
 
@@ -129,7 +129,7 @@ export const Component = () => {
 
 const formattedFile4 = `import { style } from "react-css-cx";
 
-const Container = style\`
+const Container = style("div")\`
   p-[5px]
   text-blue-500
   text-[14px]
@@ -144,7 +144,7 @@ export const Component = () => {
 const unformattedFile5 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
   
 \`;
 
@@ -157,9 +157,36 @@ export const Component = () => {
 
 const formattedFile5 = `import { style } from "react-css-cx";
 
-const Container = style\`\`;
+const Container = style("div")\`\`;
 
 export const Component = () => {
+  return <Container className="mx-[5px]" />;
+};
+`;
+
+const unformattedFile6 = `
+import { style } from 'react-css-cx';
+
+const Container = style("div")\`
+  
+\`;
+
+export const Component = () => {
+  const a = 1;
+
+  return (
+    <Container className="mx-[5px]" />
+  );
+}
+`;
+
+const formattedFile6 = `import { style } from "react-css-cx";
+
+const Container = style("div")\`\`;
+
+export const Component = () => {
+  const a = 1;
+
   return <Container className="mx-[5px]" />;
 };
 `;
@@ -188,5 +215,10 @@ describe("React files formatting", () => {
   test("should handle empty content", () => {
     const result = subject(unformattedFile5);
     expect(result).toEqual(formattedFile5);
+  });
+
+  test("should be able to format a complex file", () => {
+    const result = subject(unformattedFile6);
+    expect(result).toEqual(formattedFile6);
   });
 });

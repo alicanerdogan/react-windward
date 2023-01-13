@@ -69,6 +69,7 @@
   "homepage": "https://github.com/alicanerdogan/react-css-cx#readme",
   "devDependencies": {
     "@types/jest": "^29.2.5",
+    "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.31.0",

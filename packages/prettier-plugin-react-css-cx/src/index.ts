@@ -81,8 +81,8 @@ function restoreEmptyLines(code: string) {
   return code
     .split("\n")
     .map((line) => {
-      if (line === DUMMY_COMMENT) {
-        return "";
+      if (line.includes(DUMMY_COMMENT)) {
+        return line.replace(DUMMY_COMMENT, "");
       }
       return line;
     })
@@ -137,10 +137,15 @@ function getTemplateLiterals(
       if (decl.init?.type !== "TaggedTemplateExpression") {
         continue;
       }
-      if (decl.init.tag.type !== "Identifier") {
+      if (decl.init.tag.type !== "CallExpression") {
         continue;
       }
-      if (decl.init.tag.name !== importedStyleFnLocalName) {
+
+      if (decl.init.tag.callee.type !== "Identifier") {
+        continue;
+      }
+
+      if (decl.init.tag.callee.name !== importedStyleFnLocalName) {
         continue;
       }
       templateLiterals.push(decl.init.quasi);
@@ -149,13 +154,10 @@ function getTemplateLiterals(
   return templateLiterals;
 }
 
-function modifyTemplateLiterals(ast: ReturnType<typeof babelParser>) {
-  const importedStyleFnLocalName = getImportedStyleFnLocalName(ast);
-
-  if (!importedStyleFnLocalName) {
-    return null;
-  }
-
+function modifyTemplateLiterals(
+  ast: ReturnType<typeof babelParser>,
+  importedStyleFnLocalName: string,
+) {
   const literals = getTemplateLiterals(ast, importedStyleFnLocalName);
 
   for (const literal of literals) {
@@ -221,10 +223,17 @@ function defaultPreprocessor(code: string, options: ParserOptions) {
     };
 
     let ast = babelParser(code, parserOptions);
+
+    const importedStyleFnLocalName = getImportedStyleFnLocalName(ast);
+    if (!importedStyleFnLocalName) {
+      // if the style fn is not imported, abort the process
+      return code;
+    }
+
     code = replaceEmptyLinesWithDummyComment(code, ast);
     ast = babelParser(code, parserOptions);
 
-    modifyTemplateLiterals(ast);
+    modifyTemplateLiterals(ast, importedStyleFnLocalName);
 
     const newAST = file({
       type: "Program",
@@ -245,6 +254,7 @@ function defaultPreprocessor(code: string, options: ParserOptions) {
   } catch (error) {
     console.warn("PRETTIER PLUGIN FORMAT ERROR:", error);
   }
+  return code;
 }
 
 const parsers = {

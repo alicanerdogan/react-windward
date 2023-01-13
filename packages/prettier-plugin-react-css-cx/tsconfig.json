@@ -6,6 +6,7 @@
       "es2020.string",
       "es2020.symbol.wellknown"
     ],
+    "types": ["node", "jest"],
     "target": "ES2019",
     "module": "commonjs",
     "declaration": true,
