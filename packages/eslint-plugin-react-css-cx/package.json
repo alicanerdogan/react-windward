@@ -70,9 +70,7 @@
   "engines": {
     "node": ">= 16"
   },
-  "dependencies": {
-    "requireindex": "^1.2.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "eslint": ">= 5"
   },
@@ -81,7 +79,6 @@
     "@types/estree": "^1.0.0",
     "@types/jest": "^29.2.5",
     "@types/node": "^18.11.18",
-    "@types/requireindex": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.31.0",

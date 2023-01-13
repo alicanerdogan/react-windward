@@ -27,7 +27,7 @@ const ruleTester = new RuleTester({
 const validFile1 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 
@@ -41,7 +41,7 @@ export const Component = () => {
 const validFile2 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 
@@ -55,7 +55,7 @@ export const Component = () => {
 const invalidFile1 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 
@@ -69,7 +69,7 @@ export const Component = () => {
 const invalidFile2 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 
@@ -83,7 +83,7 @@ export const Component = () => {
 const invalidFile3 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 
@@ -98,7 +98,7 @@ export const Component = () => {
 const invalidFile4 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 
@@ -113,7 +113,7 @@ export const Component = () => {
 const invalidFile5 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 

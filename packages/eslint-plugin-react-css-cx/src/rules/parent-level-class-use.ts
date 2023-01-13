@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforces: TODO
+ * @fileoverview Enforces valid class use in style definitions
  * @author Alican Erdogan <https://github.com/alicanerdogan>
  */
 
@@ -70,7 +70,7 @@ const rule: Rule.RuleModule = {
   meta: {
     // eslint-disable-next-line eslint-plugin/require-meta-docs-url
     docs: {
-      description: "Enforces: TODO",
+      description: "Enforces valid class use in style definitions",
       recommended: false,
     },
     schema: [],
@@ -107,12 +107,18 @@ const rule: Rule.RuleModule = {
           return;
         }
 
-        if (node.tag.type !== "Identifier") {
+        if (node.tag.type !== "CallExpression") {
           return;
         }
 
+        if (node.tag.callee.type !== "Identifier") {
+          return;
+        }
+
+        const nodeName = node.tag.callee.name;
+
         const notImportableFunction = importedFnNames.every(
-          (fnName) => fnName !== (node.tag as any).name
+          (fnName) => fnName !== nodeName
         );
 
         if (notImportableFunction) {
@@ -125,9 +131,7 @@ const rule: Rule.RuleModule = {
         const classNames = tokenizeTemplateString(templateString);
         const invalidClassNames = findInvalidClassNames(classNames);
 
-        // Check if the string contains "abcdef"
         if (invalidClassNames.length > 0) {
-          // Report an error if it does
           context.report({
             node: node,
             messageId: "errorMsg1",

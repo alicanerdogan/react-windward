@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforces: TODO
+ * @fileoverview Enforces valid class use in inline style definitions
  * @author Alican Erdogan <https://github.com/alicanerdogan>
  */
 
@@ -68,7 +68,7 @@ const rule: Rule.RuleModule = {
   meta: {
     // eslint-disable-next-line eslint-plugin/require-meta-docs-url
     docs: {
-      description: "Enforces: TODO",
+      description: "Enforces valid class use in inline style definitions",
       recommended: false,
     },
     schema: [],

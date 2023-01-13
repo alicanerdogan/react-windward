@@ -28,7 +28,7 @@ import { style } from 'react-css-cx';
 const validFile2 = `
 import { style } from 'react-css-cx';
 
-const Container = style\`
+const Container = style("div")\`
 p-[5px]
 \`;
 `;
@@ -36,7 +36,7 @@ p-[5px]
 const validFile3 = `
 import { style } from 'another-style';
 
-const Container = style\`
+const Container = style("div")\`
 m-[5px]
 \`;
 `;
@@ -45,7 +45,7 @@ const validFile4 = `
 import {} from 'react-css-cx';
 import { style } from 'another-style';
 
-const Container = style\`
+const Container = style("div")\`
 m-[5px]
 \`;
 `;
@@ -53,7 +53,7 @@ m-[5px]
 const invalidFile1 = `
 import { style } from 'react-css-cx';
 
-const xyz = style\`
+const xyz = style("div")\`
 m-[5px]
 \`;
 `;
@@ -61,7 +61,7 @@ m-[5px]
 const invalidFile2 = `
 import { style } from 'react-css-cx';
 
-const xyz = style\`
+const xyz = style("div")\`
 sm:m-[5px]
 \`;
 `;
@@ -69,7 +69,7 @@ sm:m-[5px]
 const invalidFile3 = `
 import { style as styleFn } from 'react-css-cx';
 
-const xyz = styleFn\`
+const xyz = styleFn("div")\`
 sm:m-[5px]
 \`;
 `;

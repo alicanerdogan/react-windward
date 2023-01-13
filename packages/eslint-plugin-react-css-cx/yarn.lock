@@ -1124,11 +1124,6 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.7.2.tgz#6c2324641cc4ba050a8c710b2b251b377581fbf0"
   integrity sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==
 
-"@types/requireindex@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@types/requireindex/-/requireindex-1.2.0.tgz#b31ed3719fe0a5824fef9a3165f7743560d26bd5"
-  integrity sha512-XgAXuN2bI/w2kAN6jwhb5jrrSznOsded+Fz5YC+3Vs3f8UyE3d8FnTvIWe6shZdpz9NMHY/wtEWk17yL0hCSmg==
-
 "@types/retry@0.12.0":
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
@@ -4831,11 +4826,6 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==
-
-requireindex@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
-  integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
