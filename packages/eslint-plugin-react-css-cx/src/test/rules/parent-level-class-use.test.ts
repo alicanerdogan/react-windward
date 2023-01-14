@@ -30,6 +30,8 @@ import { style } from 'react-css-cx';
 
 const Container = style("div")\`
 p-[5px]
+flex-col
+flex-row
 \`;
 `;
 
@@ -71,6 +73,15 @@ import { style as styleFn } from 'react-css-cx';
 
 const xyz = styleFn("div")\`
 sm:m-[5px]
+\`;
+`;
+
+const invalidFile4 = `
+import { style as styleFn } from 'react-css-cx';
+
+const xyz = styleFn("div")\`
+sm:flex-0
+flex-1
 \`;
 `;
 
@@ -116,6 +127,14 @@ ruleTester.run("check-template-string", rule, {
       errors: [
         {
           message: "Disallowed tailwind classes are in use: sm:m-[5px]",
+        },
+      ],
+    },
+    {
+      code: invalidFile4,
+      errors: [
+        {
+          message: "Disallowed tailwind classes are in use: sm:flex-0, flex-1",
         },
       ],
     },

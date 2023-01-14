@@ -45,11 +45,16 @@ const DISALLOWED_TAILWIND_CLASSES = [
   "snap-normal",
 ];
 
+const ALLOWED_TAILWIND_CLASSES = new Set(["flex-col", "flex-row"]);
+
 const REGEX_PATTERNS = DISALLOWED_TAILWIND_CLASSES.map((className) => {
   return new RegExp(`(^|:)${className}`);
 });
 
 function isValidClassName(className: string): boolean {
+  if (ALLOWED_TAILWIND_CLASSES.has(className)) {
+    return true;
+  }
   return REGEX_PATTERNS.every((regex) => !regex.test(className));
 }
 
