@@ -89,8 +89,10 @@ function restoreEmptyLines(code: string) {
     .join("\n");
 }
 
-function getImportedStyleFnLocalName(ast: ReturnType<typeof babelParser>) {
-  let importedStyleFnLocalName = "";
+function getImportedStyleFnLocalNames(
+  ast: ReturnType<typeof babelParser>,
+): string[] {
+  const importedStyleFnLocalNames: string[] = [];
   for (const el of ast.program.body) {
     if (el.type !== "ImportDeclaration") {
       continue;
@@ -106,24 +108,21 @@ function getImportedStyleFnLocalName(ast: ReturnType<typeof babelParser>) {
       if (specifier.imported.type !== "Identifier") {
         continue;
       }
-      if (specifier.imported.name !== "style") {
+      if (!["style", "styleComponent"].includes(specifier.imported.name)) {
         continue;
       }
-      importedStyleFnLocalName =
-        specifier.local.name || specifier.imported.name;
+      importedStyleFnLocalNames.push(
+        specifier.local.name || specifier.imported.name,
+      );
     }
   }
 
-  if (!importedStyleFnLocalName) {
-    return null;
-  }
-
-  return importedStyleFnLocalName;
+  return importedStyleFnLocalNames;
 }
 
 function getTemplateLiterals(
   ast: ReturnType<typeof babelParser>,
-  importedStyleFnLocalName: string,
+  importedStyleFnLocalNames: string[],
 ) {
   const templateLiterals: TemplateLiteral[] = [];
   for (const el of ast.program.body) {
@@ -145,7 +144,7 @@ function getTemplateLiterals(
         continue;
       }
 
-      if (decl.init.tag.callee.name !== importedStyleFnLocalName) {
+      if (!importedStyleFnLocalNames.includes(decl.init.tag.callee.name)) {
         continue;
       }
       templateLiterals.push(decl.init.quasi);
@@ -156,9 +155,9 @@ function getTemplateLiterals(
 
 function modifyTemplateLiterals(
   ast: ReturnType<typeof babelParser>,
-  importedStyleFnLocalName: string,
+  importedStyleFnLocalNames: string[],
 ) {
-  const literals = getTemplateLiterals(ast, importedStyleFnLocalName);
+  const literals = getTemplateLiterals(ast, importedStyleFnLocalNames);
 
   for (const literal of literals) {
     for (let i = 0; i < literal.quasis.length; i++) {
@@ -224,8 +223,8 @@ function defaultPreprocessor(code: string, options: ParserOptions) {
 
     let ast = babelParser(code, parserOptions);
 
-    const importedStyleFnLocalName = getImportedStyleFnLocalName(ast);
-    if (!importedStyleFnLocalName) {
+    const importedStyleFnLocalNames = getImportedStyleFnLocalNames(ast);
+    if (importedStyleFnLocalNames.length === 0) {
       // if the style fn is not imported, abort the process
       return code;
     }
@@ -233,7 +232,7 @@ function defaultPreprocessor(code: string, options: ParserOptions) {
     code = replaceEmptyLinesWithDummyComment(code, ast);
     ast = babelParser(code, parserOptions);
 
-    modifyTemplateLiterals(ast, importedStyleFnLocalName);
+    modifyTemplateLiterals(ast, importedStyleFnLocalNames);
 
     const newAST = file({
       type: "Program",

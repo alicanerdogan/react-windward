@@ -191,6 +191,36 @@ export const Component = () => {
 };
 `;
 
+const unformattedFile7 = `
+import { styleComponent } from 'react-windward';
+import { Link } from '@remix-run/react';
+
+const Container = styleComponent(Link)\`p-[5px] text-blue-500
+text-[14px] leading-[20px]
+\`;
+
+export const Component = () => {
+  return (
+    <Container className="mx-[5px]" />
+  );
+}
+`;
+
+const formattedFile7 = `import { styleComponent } from "react-windward";
+import { Link } from "@remix-run/react";
+
+const Container = styleComponent(Link)\`
+  p-[5px]
+  text-blue-500
+  text-[14px]
+  leading-[20px]
+\`;
+
+export const Component = () => {
+  return <Container className="mx-[5px]" />;
+};
+`;
+
 describe("React files formatting", () => {
   test("should apply padding to the simple literal", () => {
     const result = subject(unformattedFile1);
@@ -220,5 +250,10 @@ describe("React files formatting", () => {
   test("should be able to format a complex file", () => {
     const result = subject(unformattedFile6);
     expect(result).toEqual(formattedFile6);
+  });
+
+  test("should be able to format styles for styleComponent", () => {
+    const result = subject(unformattedFile7);
+    expect(result).toEqual(formattedFile7);
   });
 });
