@@ -1,4 +1,4 @@
-name: Release eslint-plugin-react-css-cx
+name: Release eslint-plugin-react-windward
 on:
   push:
     branches: [main]
@@ -19,16 +19,16 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        working-directory: ./packages/eslint-plugin-react-css-cx
+        working-directory: ./packages/eslint-plugin-react-windward
         run: yarn install
       - name: Build
-        working-directory: ./packages/eslint-plugin-react-css-cx
+        working-directory: ./packages/eslint-plugin-react-windward
         run: yarn build
       - name: Test
-        working-directory: ./packages/eslint-plugin-react-css-cx
+        working-directory: ./packages/eslint-plugin-react-windward
         run: yarn test
       - name: Release
-        working-directory: ./packages/eslint-plugin-react-css-cx
+        working-directory: ./packages/eslint-plugin-react-windward
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

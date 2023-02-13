@@ -22,11 +22,11 @@ const ruleTester = new RuleTester({
 });
 
 const validFile1 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 `;
 
 const validFile2 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`
 p-[5px]
@@ -44,7 +44,7 @@ m-[5px]
 `;
 
 const validFile4 = `
-import {} from 'react-css-cx';
+import {} from 'react-windward';
 import { style } from 'another-style';
 
 const Container = style("div")\`
@@ -53,7 +53,7 @@ m-[5px]
 `;
 
 const invalidFile1 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const xyz = style("div")\`
 m-[5px]
@@ -61,7 +61,7 @@ m-[5px]
 `;
 
 const invalidFile2 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const xyz = style("div")\`
 sm:m-[5px]
@@ -69,7 +69,7 @@ sm:m-[5px]
 `;
 
 const invalidFile3 = `
-import { style as styleFn } from 'react-css-cx';
+import { style as styleFn } from 'react-windward';
 
 const xyz = styleFn("div")\`
 sm:m-[5px]
@@ -77,7 +77,7 @@ sm:m-[5px]
 `;
 
 const invalidFile4 = `
-import { style as styleFn } from 'react-css-cx';
+import { style as styleFn } from 'react-windward';
 
 const xyz = styleFn("div")\`
 sm:flex-0

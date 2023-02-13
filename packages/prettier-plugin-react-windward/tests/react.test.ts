@@ -11,7 +11,7 @@ function subject(code: string, options: Partial<ParserOptions> = {}) {
 }
 
 const unformattedFile1 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`
 p-[5px]
@@ -25,7 +25,7 @@ export const Component = () => {
 }
 `;
 
-const formattedFile1 = `import { style } from "react-css-cx";
+const formattedFile1 = `import { style } from "react-windward";
 
 const Container = style("div")\`
   p-[5px]
@@ -38,7 +38,7 @@ export const Component = () => {
 `;
 
 const unformattedFile2 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`
 p-[5px]
@@ -60,7 +60,7 @@ export const Component = () => {
 }
 `;
 
-const formattedFile2 = `import { style } from "react-css-cx";
+const formattedFile2 = `import { style } from "react-windward";
 
 const Container = style("div")\`
   p-[5px]
@@ -81,7 +81,7 @@ export const Component = () => {
 `;
 
 const unformattedFile3 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`
 p-[5px]
@@ -98,7 +98,7 @@ export const Component = () => {
 }
 `;
 
-const formattedFile3 = `import { style } from "react-css-cx";
+const formattedFile3 = `import { style } from "react-windward";
 
 const Container = style("div")\`
   p-[5px]
@@ -114,7 +114,7 @@ export const Component = () => {
 `;
 
 const unformattedFile4 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`p-[5px] text-blue-500
 text-[14px] leading-[20px]
@@ -127,7 +127,7 @@ export const Component = () => {
 }
 `;
 
-const formattedFile4 = `import { style } from "react-css-cx";
+const formattedFile4 = `import { style } from "react-windward";
 
 const Container = style("div")\`
   p-[5px]
@@ -142,7 +142,7 @@ export const Component = () => {
 `;
 
 const unformattedFile5 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`
   
@@ -155,7 +155,7 @@ export const Component = () => {
 }
 `;
 
-const formattedFile5 = `import { style } from "react-css-cx";
+const formattedFile5 = `import { style } from "react-windward";
 
 const Container = style("div")\`\`;
 
@@ -165,7 +165,7 @@ export const Component = () => {
 `;
 
 const unformattedFile6 = `
-import { style } from 'react-css-cx';
+import { style } from 'react-windward';
 
 const Container = style("div")\`
   
@@ -180,7 +180,7 @@ export const Component = () => {
 }
 `;
 
-const formattedFile6 = `import { style } from "react-css-cx";
+const formattedFile6 = `import { style } from "react-windward";
 
 const Container = style("div")\`\`;
 

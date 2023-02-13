@@ -1,7 +1,7 @@
 {
-  "name": "eslint-plugin-react-css-cx",
+  "name": "prettier-plugin-react-windward",
   "version": "0.0.0-development",
-  "description": "eslint plugin for react-css-cx",
+  "description": "A prettier plugin to format react-windward classes",
   "exports": {
     ".": {
       "import": {
@@ -17,9 +17,11 @@
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
   "files": [
-    "lib/**/*",
-    "custom_types"
+    "lib/**/*"
   ],
+  "workspaces": {
+    "prettier-plugin-fake": "./prettier-plugin-fake"
+  },
   "scripts": {
     "clean": "rm -rf ./lib",
     "build": "yarn clean && yarn build:esm && yarn build:cjs && yarn minify",
@@ -31,8 +33,8 @@
     "test": "jest",
     "semantic-release": "semantic-release",
     "prepack": "yarn build",
-    "lint": "eslint \"src/**/*.ts\"",
-    "format:all": "prettier --write \"src/**/*.ts\""
+    "lint": "eslint --ext '.ts' ./src",
+    "prettier:all": "prettier --write \"**/*.ts\""
   },
   "release": {
     "branches": [
@@ -45,13 +47,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alicanerdogan/react-css-cx.git"
+    "url": "https://github.com/alicanerdogan/react-windward.git"
   },
   "keywords": [
-    "eslint",
-    "eslintplugin",
-    "react-css-cx",
-    "tailwind",
+    "prettier",
+    "plugin",
     "react",
     "css",
     "typescript",
@@ -64,33 +64,34 @@
   "author": "Alican Erdogan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alicanerdogan/react-css-cx/issues"
+    "url": "https://github.com/alicanerdogan/react-windward/issues"
   },
-  "homepage": "https://github.com/alicanerdogan/react-css-cx#readme",
-  "engines": {
-    "node": ">= 16"
-  },
-  "dependencies": {},
-  "peerDependencies": {
-    "eslint": ">= 5"
-  },
+  "homepage": "https://github.com/alicanerdogan/react-windward#readme",
   "devDependencies": {
-    "@types/eslint": "^8.4.6",
-    "@types/estree": "^1.0.0",
     "@types/jest": "^29.2.5",
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "eslint": "^8.31.0",
-    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-eslint-plugin": "^5.0.7",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^29.3.1",
-    "prettier": "^2.1.2",
+    "prettier": "^2.8.1",
     "semantic-release": "^20.0.2",
     "semantic-release-monorepo": "^7.0.5",
     "terser": "^5.16.1",
-    "ts-jest": "^29.0.5",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "prettier": ">=2.1.2"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.20.7",
+    "@babel/parser": "^7.20.7",
+    "@babel/types": "^7.20.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

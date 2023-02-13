@@ -1,6 +1,5 @@
-# react-css-cx
+# react-windward
 
 ## Get Started
 
 ### API
-

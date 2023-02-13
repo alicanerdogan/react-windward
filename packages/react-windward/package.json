@@ -1,7 +1,7 @@
 {
-  "name": "prettier-plugin-react-css-cx",
+  "name": "react-windward",
   "version": "0.0.0-development",
-  "description": "A prettier plugin to format react-css-cx classes",
+  "description": " A very simplistic approach for classname composition for React Components",
   "exports": {
     ".": {
       "import": {
@@ -19,9 +19,6 @@
   "files": [
     "lib/**/*"
   ],
-  "workspaces": {
-    "prettier-plugin-fake": "./prettier-plugin-fake"
-  },
   "scripts": {
     "clean": "rm -rf ./lib",
     "build": "yarn clean && yarn build:esm && yarn build:cjs && yarn minify",
@@ -32,9 +29,7 @@
     "minify:cjs": "terser --compress --mangle -o lib/cjs/index.js -- lib/cjs/index.js",
     "test": "jest",
     "semantic-release": "semantic-release",
-    "prepack": "yarn build",
-    "lint": "eslint --ext '.ts' ./src",
-    "prettier:all": "prettier --write \"**/*.ts\""
+    "prepack": "yarn build"
   },
   "release": {
     "branches": [
@@ -47,11 +42,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alicanerdogan/react-css-cx.git"
+    "url": "https://github.com/alicanerdogan/react-windward.git"
   },
   "keywords": [
-    "prettier",
-    "plugin",
     "react",
     "css",
     "typescript",
@@ -64,34 +57,24 @@
   "author": "Alican Erdogan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alicanerdogan/react-css-cx/issues"
+    "url": "https://github.com/alicanerdogan/react-windward/issues"
   },
-  "homepage": "https://github.com/alicanerdogan/react-css-cx#readme",
+  "homepage": "https://github.com/alicanerdogan/react-windward#readme",
   "devDependencies": {
     "@types/jest": "^29.2.5",
-    "@types/node": "^18.11.18",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "@types/mocha": "^10.0.0",
     "jest": "^29.3.1",
-    "prettier": "^2.8.1",
     "semantic-release": "^20.0.2",
     "semantic-release-monorepo": "^7.0.5",
-    "terser": "^5.16.1",
-    "ts-jest": "^29.0.3",
-    "typescript": "^4.9.4"
+    "terser": "^5.15.1",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
   },
-  "peerDependencies": {
-    "prettier": ">=2.1.2"
-  },
-  "dependencies": {
-    "@babel/generator": "^7.20.7",
-    "@babel/parser": "^7.20.7",
-    "@babel/types": "^7.20.7"
-  },
-  "engines": {
-    "node": ">=16.0.0"
+  "optionalDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

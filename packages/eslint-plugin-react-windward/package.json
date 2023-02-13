@@ -1,7 +1,7 @@
 {
-  "name": "react-css-cx",
+  "name": "eslint-plugin-react-windward",
   "version": "0.0.0-development",
-  "description": " A very simplistic approach for classname composition for React Components",
+  "description": "eslint plugin for react-windward",
   "exports": {
     ".": {
       "import": {
@@ -17,7 +17,8 @@
   "types": "./lib/cjs/types/index.d.ts",
   "main": "./lib/cjs/index.js",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "custom_types"
   ],
   "scripts": {
     "clean": "rm -rf ./lib",
@@ -29,7 +30,9 @@
     "minify:cjs": "terser --compress --mangle -o lib/cjs/index.js -- lib/cjs/index.js",
     "test": "jest",
     "semantic-release": "semantic-release",
-    "prepack": "yarn build"
+    "prepack": "yarn build",
+    "lint": "eslint \"src/**/*.ts\"",
+    "format:all": "prettier --write \"src/**/*.ts\""
   },
   "release": {
     "branches": [
@@ -42,9 +45,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alicanerdogan/react-css-cx.git"
+    "url": "https://github.com/alicanerdogan/react-windward.git"
   },
   "keywords": [
+    "eslint",
+    "eslintplugin",
+    "react-windward",
+    "tailwind",
     "react",
     "css",
     "typescript",
@@ -57,24 +64,33 @@
   "author": "Alican Erdogan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alicanerdogan/react-css-cx/issues"
+    "url": "https://github.com/alicanerdogan/react-windward/issues"
   },
-  "homepage": "https://github.com/alicanerdogan/react-css-cx#readme",
+  "homepage": "https://github.com/alicanerdogan/react-windward#readme",
+  "engines": {
+    "node": ">= 16"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "eslint": ">= 5"
+  },
   "devDependencies": {
+    "@types/eslint": "^8.4.6",
+    "@types/estree": "^1.0.0",
     "@types/jest": "^29.2.5",
-    "@types/mocha": "^10.0.0",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-eslint-plugin": "^5.0.7",
     "jest": "^29.3.1",
+    "prettier": "^2.1.2",
     "semantic-release": "^20.0.2",
     "semantic-release-monorepo": "^7.0.5",
-    "terser": "^5.15.1",
+    "terser": "^5.16.1",
     "ts-jest": "^29.0.5",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.4"
-  },
-  "optionalDependencies": {
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "typescript": "^4.9.4"
   }
 }

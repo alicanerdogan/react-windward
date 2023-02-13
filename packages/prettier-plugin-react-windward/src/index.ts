@@ -95,7 +95,7 @@ function getImportedStyleFnLocalName(ast: ReturnType<typeof babelParser>) {
     if (el.type !== "ImportDeclaration") {
       continue;
     }
-    if (el.source.value !== "react-css-cx") {
+    if (el.source.value !== "react-windward") {
       continue;
     }
 

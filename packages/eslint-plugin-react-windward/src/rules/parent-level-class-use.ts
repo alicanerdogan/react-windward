@@ -89,8 +89,8 @@ const rule: Rule.RuleModule = {
 
     return {
       ImportDeclaration(node) {
-        // check if the import is for 'react-css-cx'
-        if (node.source.value === "react-css-cx") {
+        // check if the import is for 'react-windward'
+        if (node.source.value === "react-windward") {
           for (const specifier of node.specifiers) {
             if (specifier.type !== "ImportSpecifier") {
               continue;
