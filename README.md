@@ -5,13 +5,13 @@
   React Windward
 </h1>
 
-# Description
+## Description
 
-# Philosophy
+## Philosophy
 
-# Comparison to similar libraries
+## Comparison to similar libraries
 
-# Install
+## Install
 
 For `yarn`:
 
@@ -25,10 +25,10 @@ For `npm`:
 npm install react-windward
 ```
 
-# Tools
+## Tools
 
-## Prettier Plugin
+### Prettier Plugin
 
-## Eslint Plugin
+### Eslint Plugin
 
-# API
+## API
