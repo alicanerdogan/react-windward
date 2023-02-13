@@ -81,7 +81,7 @@ function concat(
   return classes;
 }
 
-function classnames(...args: TCXArgs): string {
+export function cx(...args: TCXArgs): string {
   const classes: string[] = [];
 
   for (const arg of args) {
@@ -95,7 +95,7 @@ function classnames(...args: TCXArgs): string {
     }
 
     if (Array.isArray(arg) && arg.length > 0) {
-      const inner = classnames(arg);
+      const inner = cx(arg);
       if (inner) {
         classes.push(inner);
       }
@@ -122,7 +122,7 @@ function createElement(
     ({ styleVariant, className, composedStyle, ...props }: any, ref: any) => {
       let newFn: any = fn;
       const dynamicClasses = newFn ? newFn(styleVariant || {}) : [];
-      const newClassName = classnames(
+      const newClassName = cx(
         concatClasses,
         ...dynamicClasses,
         composedStyle,
@@ -199,11 +199,4 @@ export function extendStyled<
     TTag,
     TVariantBase & TVariant
   >;
-}
-
-export function classNames(
-  classes: TemplateStringsArray,
-  ...args: (string | StaticComposableStyle)[]
-): StaticComposableStyle {
-  return concat(classes, ...args);
 }
