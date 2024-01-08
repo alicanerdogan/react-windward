@@ -27,6 +27,7 @@ type StyledComponentProps<
 > = JSX.IntrinsicElements[TTag] & {
   styleVariant?: TVariant;
   composedStyle?: StaticComposableStyle;
+  children?: React.ReactNode | undefined 
 };
 
 export interface CSSClassComponent<
@@ -200,3 +201,4 @@ export function extendStyled<
     TVariantBase & TVariant
   >;
 }
+
